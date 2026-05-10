@@ -1,0 +1,8 @@
+app_identifier("io.github.eacardenase.GreenField") # The bundle identifier of your app
+apple_id("eacardenase@gmail.com") # Your Apple Developer Portal username
+
+itc_team_id("128858715") # App Store Connect Team ID
+team_id("DZDWNPN8YP") # Developer Portal Team ID
+
+# For more information about the Appfile, see:
+#     https://docs.fastlane.tools/advanced/#appfile
