@@ -8,14 +8,21 @@
 import SwiftUI
 
 struct VegetableListScreen: View {
+    @State private var vegetables = [Vegetable]()
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        List(vegetables, id: \.vegetableId) { vegetable in
+            Text(vegetable.name)
         }
-        .padding()
+        .task {
+            do {
+                vegetables = try await VegetableHTTPClient.fetchVegetable()
+            } catch {
+                print(
+                    "Failed to load vegetable with error: \(error.localizedDescription)"
+                )
+            }
+        }
     }
 }
 
