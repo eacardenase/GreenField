@@ -11,9 +11,10 @@ struct VegetableListScreen: View {
     @State private var vegetables = [Vegetable]()
 
     var body: some View {
-        List(vegetables, id: \.vegetableId) { vegetable in
-            Text(vegetable.name)
+        List(vegetables) { vegetable in
+            VegetableCellView(vegetable: vegetable)
         }
+        .navigationTitle("Vegetables")
         .task {
             do {
                 vegetables = try await VegetableHTTPClient.fetchVegetable()
@@ -27,5 +28,7 @@ struct VegetableListScreen: View {
 }
 
 #Preview {
-    VegetableListScreen()
+    NavigationStack {
+        VegetableListScreen()
+    }
 }
